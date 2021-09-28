@@ -329,7 +329,7 @@ const QuizNav = ({qList, onSelect}) => {
                 }
                 return (
                     <nav className="quiz-nav">
-                        <a href="# " title="Previous question" className="prev" onClick={(e)=>onSelect(parseInt(q.id)-2)}>≤</a>
+                        <a href="# " title="Previous question" className="prev" onClick={(e)=>{e.preventDefault();onSelect(parseInt(q.id)-2)}}>≤</a>
                         <ul className="inline">
                             { navList() }
                         </ul>
