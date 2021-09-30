@@ -11,7 +11,7 @@ import {ScrollTrigger} from "gsap/ScrollTrigger";
 import Body from "./Body";
 import store, { ACTION_SET_SECTIONS, fetchData, assetsPath, ACTION_SET_VIEW, ACTION_SET_SCORE } from "./store";
 import {SwitchTransition, Transition, TransitionGroup} from "react-transition-group";
-import { IconBackArrow, IconCabin, IconSkyactive, IconSound, IconStyle, IconSustainable, Logo, ScrollDown, IconExplore, IconHome, IconFba, IconFbb, IconFbc, IconFbd, IconRestart} from "./Icons";
+import { IconBackArrow, IconCabin, IconSkyactive, IconSound, IconStyle, IconSustainable, Logo, ScrollDown, IconExplore, IconHome, IconFba, IconFbb, IconFbc, IconFbd, IconRestart, IconBack, IconNext, IconStart} from "./Icons";
 import {Provider, useSelector, useDispatch} from "react-redux";
 import { useEffect, useRef, useState } from "preact/hooks";
 import HoverButton from "./HoverButton";
@@ -182,7 +182,7 @@ const HomePanel = (props) => {
             <IconHome />
             <h1>{globalData.headline}</h1>
             <div dangerouslySetInnerHTML={setHtml(data.content)} />
-            <a href="#" class="btn" onClick={handleClick}>{globalData.start}  <i>≥</i></a>
+            <a href="#" class="btn" onClick={handleClick}>{globalData.start}  <IconStart /></a>
         </DefaultPanel>
     )
 }
@@ -220,7 +220,7 @@ const FeedbackPanel = (props) => {
     return (
         <DefaultPanel>
             <div className="score">
-                <h3 className="text-center"> You scored {Math.round(score / questions.length) * 100 }</h3>
+                <h3 className="text-center"> You scored {Math.round((score / questions.length) * 100) }</h3>
             </div>
 
             {featImage}
@@ -299,8 +299,8 @@ const QuestionOptions = ({className, onSelect, disabled}) => {
                     <Transition
         key={data}
         timeout={1000}
-        onEnter={n=>gsap.from(n.querySelectorAll('label'),{duration:0.3, y: 30, stagger: 0.05, alpha:0, ease: 'expo.out'})}
-        onExit={n=>{gsap.to(n.querySelectorAll('label'),{duration:0.3, stagger: 0.01, alpha:0})}}
+        onEnter={n=>gsap.from(n.querySelectorAll('label'),{duration:0.5, y: 30, stagger: 0.05, alpha:0, rotateY: -20, ease: 'expo.out'})}
+        onExit={n=>{gsap.to(n.querySelectorAll('label'),{duration:0.3, y: 10, stagger: 0.05, alpha:0, ease: 'expo.in'})}}
         // onExit={n=>console.log('exitting')}
         mountOnEnter
         appear={true}
@@ -324,16 +324,16 @@ const QuizNav = ({qList, onSelect}) => {
             {q => {
                 const navList = () => {
                     return qList.map( (v, i) => 
-                        <li className={i+1==q.id?'active':''}><a type="button" href="#" title={`Question ${i+1}`} onClick={(e)=>{e.preventDefault();onSelect(i)}}>•</a></li>
+                        <li className={i+1==q.id?'active':''}><a aria-role="button" href="#" title={`Question ${i+1}`} onClick={(e)=>{e.preventDefault();onSelect(i)}}>•</a></li>
                     )
                 }
                 return (
                     <nav className="quiz-nav">
-                        <a href="# " title="Previous question" className="prev" onClick={(e)=>{e.preventDefault();onSelect(parseInt(q.id)-2)}}>≤</a>
+                        <a href="# " title="Previous question" className="prev" onClick={(e)=>{e.preventDefault();onSelect(parseInt(q.id)-2)}}><IconBack /></a>
                         <ul className="inline">
                             { navList() }
                         </ul>
-                        <a href="#" title="Next question" className="next" onClick={(e)=>{e.preventDefault();onSelect(parseInt(q.id))}}>≥</a>
+                        <a href="#" title="Next question" className="next" onClick={(e)=>{e.preventDefault();onSelect(parseInt(q.id))}}><IconNext /></a>
                     </nav>
                 )
             }}
@@ -372,8 +372,6 @@ const QuizPanel = (props) => {
 
     const showQuestion = (id) => {
         if (id >= data.length) {
-            console.log('showFB');
-
             dispatch({type:ACTION_SET_SCORE, payload: score});
             dispatch({type:ACTION_SET_VIEW, payload:'feedback'});
             return;
@@ -392,7 +390,7 @@ const QuizPanel = (props) => {
             <QuizContext.Provider value={data[question]}>
                 <div className="score">
                     Your score
-                    <div>{Math.round(score / data.length) * 100 }</div>
+                    <div>{Math.round((score / data.length) * 100) }</div>
                 </div>
                 <div className="question-body">
                     <SwitchTransition>
@@ -430,18 +428,20 @@ const QuizPanel = (props) => {
                     <QuestionOptions onSelect={onSelectOption} className={ca? 'complete': ''} disabled={ca} />
                 </div>
 
-                {ca && <SwitchTransition>
+                {<SwitchTransition>
                     <Transition
                         // in={ca}
-                        key={question}
-                        timeout={1000}
-                        onEnter={n=>gsap.from(n,{duration:0.5, alpha: 0})}
-                        onExit={n=>{gsap.to(n,{duration:0.4, alpha:0})}}
+                        // key={question}
+                        key={ca}
+                        timeout={300}
+                        onEnter={n=>{console.log(n),gsap.from(n,{duration:2, alpha: 0, ease: 'expo.inOut', height: 0, transformOrigin: "50% 100%", y: -30})}}
+                        onExit={n=>{console.log(n),gsap.to(n,{duration:0.3, alpha:0})}}
                         // onExit={n=>console.log('exitting')}
-                        unmountOnExit
-                        appear={true}
+                        // unmountOnExit
+                        // appear={true}
                         >
-                            <div className="fb" dangerouslySetInnerHTML={setHtml(data[question].fbca)}></div>
+                                {ca && <div className="fb" dangerouslySetInnerHTML={setHtml(data[question].fbca)}></div>}
+                            {!ca && <div className='fb'></div>}
 
                     </Transition>                
                     </SwitchTransition>

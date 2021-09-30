@@ -302,6 +302,8 @@ section.footer {
     margin-top: 1rem;
     border-radius: 20px;
     font-size: 24/16 + rem;
+    line-height: 1;
+    align-items: center;
 }
 
 .feature-image {
@@ -309,7 +311,26 @@ section.footer {
   max-width: 70%;
 }
 
+.view-home {
+  .feature-image {
+    margin-top: 1rem;
+  }
+  .btn i {
+    padding-top: 0.3rem;
+  }
+}
 .quiz-panel {
+  transform-style: preserve-3d;
+  perspective: 800px;
+  perspective-origin: 50%;
+  backface-visibility: visible;
+  .question-options, label {
+    // transform-style: preserve-3d;
+    perspective: 800px;
+    perspective-origin: 50%;
+    backface-visibility: visible;
+  
+  }
   p, h1, h2 {
     color: white;
 
@@ -324,7 +345,7 @@ section.footer {
   }
 }
 .quiz-nav {
-  padding: 1rem;
+  padding: 1rem 0;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -332,7 +353,7 @@ section.footer {
 
   li {
     display: inline;
-    padding: 0.3rem;
+    padding: 0.2rem;
     
     &.active a {
       color: #F9B406;
@@ -342,12 +363,11 @@ section.footer {
     }
   }
   .prev,.next {
-    background: var(--button-bg-blue);
-    color: white;
-    clip-path: circle(14px at 50% 56%);
+    // background: var(--button-bg-blue);
+    // color: white;
+    // clip-path: circle(14px at 50% 56%);
     display: flex;
-    width: 30px;
-    height: 30px;
+    padding: 0.5rem;
     justify-content: center;
     align-items: center;    
     line-height: 0;
@@ -383,7 +403,7 @@ section.footer {
   }
 
   &.complete {
-    input:not(:checked)+label.ca {
+    label.ca {
       border-color: yellowgreen;
     }
   }

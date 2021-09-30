@@ -452,3 +452,46 @@ export const IconRestart = () => {
 		</i>
 	)
 }
+
+export const IconBack = () => {
+	return (
+		<i>
+<svg width="45px" height="45px" viewBox="0 0 45 45">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g  transform="translate(-47.000000, -814.000000)">
+            <g  transform="translate(47.000000, 814.000000)">
+                <circle fill-opacity="0.2" fill="#000000" cx="22.5" cy="22.5" r="22.5"></circle>
+                <path d="M24.0070204,31 L28.9990204,31 L25.2310204,22.696 L28.9990204,14.368 L24.0070204,14.368 L20.2150204,22.216 L20.2150204,23.2 L24.0070204,31 Z M16.9270204,31 L13.1350204,23.2 L13.1350204,22.216 L16.9270204,14.368 L21.9190204,14.368 L18.1510204,22.696 L21.9190204,31 L16.9270204,31 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>		
+</i>
+	)
+}
+export const IconNext = () => {
+	return (
+		<i>
+<svg width="45px" height="45px" viewBox="0 0 45 45">
+<circle style="fill:#2B317A;" cx="22.5" cy="22.5" r="22.5"/>
+<path style="fill:#FFFFFF;" d="M22.6,31h5l3.8-7.8v-1l-3.8-7.8h-5l3.8,8.3L22.6,31z M15.5,31l3.8-8.3l-3.8-8.3h5
+	l3.8,7.8v1L20.5,31H15.5z"/>
+</svg>		
+</i>
+	)
+}
+export const IconStart = () => {
+	return (
+		<i>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-772.000000, -869.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g  transform="translate(490.000000, 853.000000)">
+                <path d="M289.792,33 L294.784,33 L298.6,25.152 L298.6,24.168 L294.784,16.368 L289.792,16.368 L293.56,24.672 L289.792,33 Z M282.712,33 L286.48,24.672 L282.712,16.368 L287.704,16.368 L291.52,24.168 L291.52,25.152 L287.704,33 L282.712,33 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>		
+</i>
+	)
+}

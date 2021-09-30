@@ -54,10 +54,14 @@
       justify-content: flex-end;
       // padding: 1rem;
       color: rgb(255, 255, 255);
+      .logo {
+        margin-left: 1rem;
+      }
       img {
         display: inline-block;
         vertical-align: middle;
         // padding-left: 1rem;
+        background-color: #fff;
       }
       &>p {
         display: flex;
