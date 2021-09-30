@@ -516,7 +516,7 @@ const Main = () => {
                     
                     <MainBody>
 
-                            <div className="feature-container">
+                            <div className="feature-container relative">
 
                             
                             <SwitchTransition>

@@ -314,9 +314,17 @@ section.footer {
 .view-home {
   .feature-image {
     margin-top: 1rem;
+    margin-bottom: 0;
   }
   .btn i {
     padding-top: 0.3rem;
+  }
+  @include mq(desktop) {
+    .attribution {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+    }
   }
 }
 .quiz-panel {
