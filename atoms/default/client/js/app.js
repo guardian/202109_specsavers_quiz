@@ -180,6 +180,7 @@ const HomePanel = (props) => {
 
             </div>
             <IconHome />
+            <h4><a href={globalData.hubLink}>{globalData.hubLabel}</a></h4>
             <h1>{globalData.headline}</h1>
             <div dangerouslySetInnerHTML={setHtml(data.content)} />
             <a href="#" class="btn" onClick={handleClick}>{globalData.start}  <IconStart /></a>
