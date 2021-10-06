@@ -435,8 +435,8 @@ const QuizPanel = (props) => {
                         // key={question}
                         key={ca}
                         timeout={300}
-                        onEnter={n=>{console.log(n),gsap.from(n,{duration:2, alpha: 0, ease: 'expo.inOut', height: 0, transformOrigin: "50% 100%", y: -30})}}
-                        onExit={n=>{console.log(n),gsap.to(n,{duration:0.3, alpha:0})}}
+                        onEnter={n=>{gsap.from(n,{duration:2, alpha: 0, ease: 'expo.inOut', height: 0, transformOrigin: "50% 100%", y: -30})}}
+                        onExit={n=>{gsap.to(n,{duration:0.3, alpha:0})}}
                         // onExit={n=>console.log('exitting')}
                         // unmountOnExit
                         // appear={true}
